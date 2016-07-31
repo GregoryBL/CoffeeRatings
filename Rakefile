@@ -43,6 +43,25 @@ namespace :generate do
       f.write("class #{name} < ActiveRecord::Migration \n  def change \n  end \nend")
     end
   end
+
+  task :model do
+    desc "Create an empty model in app/models, e.g., rake generate:model NAME=ModelName"
+    unless ENV.has_key?('NAME')
+      raise "Must specify model name, e.g., rake generate:migration NAME=ModelName"
+    end
+
+    filename = "%s.rb" % [ENV['NAME']]
+    path = APP_ROOT.join('app', 'models', filename)
+
+    if File.exist?(path)
+      raise "ERROR: File '#{path}' already exists"
+    end
+
+    puts "Creating #{path}"
+    File.open(path, 'w+') do |f|
+      f.write("require_relative '../../db/config' \n\nclass #{ENV['name']} < ActiveRecord::Base \nend")
+    end
+  end
 end
 
 desc "populate the test database with sample data"
