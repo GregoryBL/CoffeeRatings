@@ -1,5 +1,6 @@
 require_relative '../../db/config' 
 
-class User < ActiveRecord::Base 
+class Coffee < ActiveRecord::Base
+  belongs_to :roaster
   has_many :reviews
 end
