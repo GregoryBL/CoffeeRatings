@@ -59,7 +59,7 @@ namespace :generate do
 
     puts "Creating #{path}"
     File.open(path, 'w+') do |f|
-      f.write("require_relative '../../db/config' \n\nclass #{ENV['name']} < ActiveRecord::Base \nend")
+      f.write("require_relative '../../db/config' \n\nclass #{ENV['NAME']} < ActiveRecord::Base \nend")
     end
   end
 end
