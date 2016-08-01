@@ -1,4 +1,4 @@
-require_relative '../../db/config' 
+require_relative '../../config/application'
 
 class Preparer < ActiveRecord::Base
   has_many :reviews
